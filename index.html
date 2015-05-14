@@ -89,9 +89,20 @@
 			var self = $(this); 
     		self.closest('tr').remove();
 
+    		/* -- Navegando entre a arvore do html
+    		//var itemTotal = self.parent().siblings('.item-total').text();
+    		var itemTotal = self.closest('tr').find('.item-total').text();
+    		var total = $('#valor-total').text();
+    		var novoTotal = parseFloat(total - itemTotal);
+    		$('#valor-total').text(novoTotal);
+    		
+			/ Atualiza quantidade do carrinho
 			var quantidadeAtual = $('#quantidade-de-itens').text();
 			var novaQuantidade = parseInt(quantidadeAtual)-1;
 			$('#quantidade-de-itens').text(novaQuantidade);
+			*/
+
+			calculaCarrinho();
 		};
 
 		function calculaCarrinho () {
