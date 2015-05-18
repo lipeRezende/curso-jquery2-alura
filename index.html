@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/carrinho.css">
@@ -82,43 +83,6 @@
 	
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script type="text/javascript">
-		var removeItem = function(event) {
-			event.preventDefault();
-
-			var self = $(this); 
-    		self.closest('tr').remove();
-
-    		/* -- Navegando entre a arvore do html
-    		//var itemTotal = self.parent().siblings('.item-total').text();
-    		var itemTotal = self.closest('tr').find('.item-total').text();
-    		var total = $('#valor-total').text();
-    		var novoTotal = parseFloat(total - itemTotal);
-    		$('#valor-total').text(novoTotal);
-    		
-			/ Atualiza quantidade do carrinho
-			var quantidadeAtual = $('#quantidade-de-itens').text();
-			var novaQuantidade = parseInt(quantidadeAtual)-1;
-			$('#quantidade-de-itens').text(novaQuantidade);
-			*/
-
-			calculaCarrinho();
-		};
-
-		function calculaCarrinho () {
-			var itens = $(".item-total");
-			var total =0,valor =0;
-			$.each(itens, function(i,item) {
-				valor = parseFloat($(item).text());
-				total += valor;
-			});
-			$('#valor-total').text(total);
-			$('#quantidade-de-itens').text(itens.length);
-		};
-
-		$(calculaCarrinho);
-		$(".remove-item").click(removeItem);
-		
-	</script>
+	<script type="text/javascript" src="js/carrinho.js"></script>
 </body>
 </html>
