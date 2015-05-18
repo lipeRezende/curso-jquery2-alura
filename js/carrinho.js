@@ -20,8 +20,18 @@
 			calculaCarrinho();
 		};
 
+		var undo = function() {
+			var itens = $("tr:visible");
+			itens.removeClass("recuperado");
+			itens = $("tr:hidden");
+			itens.show();
+			itens.addClass("recuperado");
+			
+			calculaCarrinho();
+		};
+
 		function calculaCarrinho () {
-			var itens = $(".item-total");
+			var itens = $(".item-total:visible");
 			var total =0,valor =0;
 			$.each(itens, function(i,item) {
 				valor = parseFloat($(item).text());
@@ -30,12 +40,6 @@
 			$('#valor-total').text(total);
 			$('#quantidade-de-itens').text(itens.length);
 		};
-		var undo = function() {
-			var itens = $("tr:hidden");
-			itens.show();
-			itens.addClass("recuperado");
-		};
-
 
 $(calculaCarrinho);
 $(".remove-item").click(removeItem);
