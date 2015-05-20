@@ -46,6 +46,28 @@
 			});
 		};
 
-$(calculaCarrinho);
-$(".remove-item").click(removeItem);
-$(".undo").click(undo);
+		var umaPropaganda = function() {
+			var propagandas = ["O que acha de comprar uma motocicleta?",
+               "O que acha de comprar uma lancha?",
+               "O que acha de comprar uma bicicleta?",
+               "O que acha de comprar uma carro?"
+               ];
+	        var posisaoSelecionada = Math.floor(propagandas.length * Math.random());
+	        var texto = propagandas[posisaoSelecionada];
+	        var tr =$("<tr>").addClass('propaganda');
+	        tr.append($("<td>").attr("colspan", 6));
+	        tr.find("td").text(texto);
+	        return tr;
+		};
+
+var aposInicializado = function() {
+	$(calculaCarrinho);
+	$(".remove-item").click(removeItem);
+	$(".undo").click(undo);
+	$('tr:nth-child(3n),tr:last').each(function() {
+		umaPropaganda().insertAfter($(this));
+	});
+
+};
+
+$(aposInicializado);
