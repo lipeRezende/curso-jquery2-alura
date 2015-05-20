@@ -21,9 +21,10 @@
 		};
 
 		var undo = function() {
-			var itens = $("tr:visible");
+			var carrinho = $(this).closest(".carrinho");
+			var itens = carrinho.find("tr:visible");
 			itens.removeClass("recuperado");
-			itens = $("tr:hidden");
+			itens = carrinho.find("tr:hidden");
 			itens.show();
 			itens.addClass("recuperado");
 			
@@ -31,16 +32,20 @@
 		};
 
 		function calculaCarrinho () {
-			var itens = $(".item-total:visible");
-			var total =0,valor =0;
-			$.each(itens, function(i,item) {
-				valor = parseFloat($(item).text());
-				total += valor;
+			var carrinhos = $(".carrinho");
+			carrinhos.each(function() {
+				var carrinho = $(this);
+				var itens = carrinho.find(".item-total:visible");
+				var total =0,valor =0;
+				$.each(itens, function(i,item) {
+					valor = parseFloat($(item).text());
+					total += valor;
+				});
+				carrinho.find('.valor-total').text(total);
+				carrinho.find('.quantidade-de-itens').text(itens.length);
 			});
-			$('#valor-total').text(total);
-			$('#quantidade-de-itens').text(itens.length);
 		};
 
 $(calculaCarrinho);
 $(".remove-item").click(removeItem);
-$("#undo").click(undo);
+$(".undo").click(undo);
