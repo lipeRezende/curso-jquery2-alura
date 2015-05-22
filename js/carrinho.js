@@ -60,11 +60,21 @@
 	        return tr;
 		};
 		var daDestaque = function() {
+			$(this).find('.remove-item').fadeIn();
 			$(this).addClass('hovering');
 		};
 		var tiraDestaque = function() {
+			$(this).find('.remove-item').fadeOut();
 			$(this).removeClass('hovering');
 		};
+
+		var alternarPropagandas = function(event) {
+			event.preventDefault();
+			$('.propaganda').fadeToggle();
+			$('.alternar-propagandas').toggle();
+		};
+
+
 
 var aposInicializado = function() {
 	$(calculaCarrinho);
@@ -74,7 +84,7 @@ var aposInicializado = function() {
 		umaPropaganda().insertAfter($(this));
 	});
 	$('tbody tr').hover(daDestaque, tiraDestaque);
-
+	$('.alternar-propagandas').click(alternarPropagandas);
 };
 
 $(aposInicializado);
