@@ -86,3 +86,7 @@ input[type=button] {
 	background-color:#FE0;
 }
 
+.hovering{
+    background: #ccc;
+}
+

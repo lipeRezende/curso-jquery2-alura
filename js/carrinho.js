@@ -59,6 +59,12 @@
 	        tr.find("td").text(texto);
 	        return tr;
 		};
+		var daDestaque = function() {
+			$(this).addClass('hovering');
+		};
+		var tiraDestaque = function() {
+			$(this).removeClass('hovering');
+		};
 
 var aposInicializado = function() {
 	$(calculaCarrinho);
@@ -67,6 +73,7 @@ var aposInicializado = function() {
 	$('tr:nth-child(3n),tr:last').each(function() {
 		umaPropaganda().insertAfter($(this));
 	});
+	$('tbody tr').hover(daDestaque, tiraDestaque);
 
 };
 
